@@ -1,10 +1,11 @@
-import { ProductModel } from "../models/productModel.js";
+import { LoanModel } from "../models/loanModel.js";
 
-export const ProductController = {
+export const LoanController = {
   async getAll(req, res) {
     try {
-      const products = await ProductModel.getAll();
-      res.json(products);
+      const { status } = req.query; // Menangkap query string dari URL (contoh: ?status=Terlambat)
+      const loans = await LoanModel.getAll(status);
+      res.json(loans);
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
@@ -12,8 +13,8 @@ export const ProductController = {
 
   async getById(req, res) {
     try {
-      const product = await ProductModel.getById(req.params.id);
-      res.json(product);
+      const loan = await LoanModel.getById(req.params.id);
+      res.json(loan);
     } catch (err) {
       res.status(404).json({ error: err.message });
     }
@@ -21,8 +22,8 @@ export const ProductController = {
 
   async create(req, res) {
     try {
-      const product = await ProductModel.create(req.body);
-      res.status(201).json(product);
+      const loan = await LoanModel.create(req.body);
+      res.status(201).json(loan);
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
@@ -30,8 +31,8 @@ export const ProductController = {
 
   async update(req, res) {
     try {
-      const product = await ProductModel.update(req.params.id, req.body);
-      res.json(product);
+      const loan = await LoanModel.update(req.params.id, req.body);
+      res.json(loan);
     } catch (err) {
       res.status(400).json({ error: err.message });
     }
@@ -39,8 +40,8 @@ export const ProductController = {
 
   async remove(req, res) {
     try {
-      await ProductModel.remove(req.params.id);
-      res.json({ message: "Product deleted successfully" });
+      const result = await LoanModel.remove(req.params.id);
+      res.json(result);
     } catch (err) {
       res.status(400).json({ error: err.message });
     }

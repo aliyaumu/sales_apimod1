@@ -1,15 +1,22 @@
 import { supabase } from "../config/supabaseClient.js";
 
-export const CustomerModel = {
-  async getAll() {
-    const { data, error } = await supabase.from("customers").select("*");
+export const LoanModel = {
+  async getAll(status) {
+    let query = supabase.from("loans").select("*");
+    
+    // Fitur filter query, misal: ?status=Terlambat
+    if (status) {
+      query = query.eq("status", status);
+    }
+    
+    const { data, error } = await query;
     if (error) throw error;
     return data;
   },
 
   async getById(id) {
     const { data, error } = await supabase
-      .from("customers")
+      .from("loans")
       .select("*")
       .eq("id", id)
       .single();
@@ -17,20 +24,20 @@ export const CustomerModel = {
     return data;
   },
 
-  async create(customer) {
+  async create(loanData) {
     const { data, error } = await supabase
-      .from("customers")
-      .insert([customer])
+      .from("loans")
+      .insert([loanData])
       .select()
       .single();
     if (error) throw error;
     return data;
   },
 
-  async update(id, customer) {
+  async update(id, loanData) {
     const { data, error } = await supabase
-      .from("customers")
-      .update(customer)
+      .from("loans")
+      .update(loanData)
       .eq("id", id)
       .select()
       .single();
@@ -39,8 +46,8 @@ export const CustomerModel = {
   },
 
   async remove(id) {
-    const { error } = await supabase.from("customers").delete().eq("id", id);
+    const { error } = await supabase.from("loans").delete().eq("id", id);
     if (error) throw error;
-    return { message: "Customer deleted successfully" };
+    return { message: "Data peminjaman berhasil dihapus" };
   },
 };
