@@ -29,15 +29,15 @@ create table loans (
 
 ## Panduan Instalasi & Cara Menjalankan Lokal
 
-1. Clone repositori ini ke dalam direktori lokal Anda.
+1. Clone repositori ini ke dalam direktori lokal.
 2. Buka terminal di folder repositori dan jalankan perintah:
    ```bash
    npm install
    ```
 3. Buat file `.env` pada root folder dan masukkan kredensial Supabase Anda:
    ```env
-   SUPABASE_URL=https://[YOUR_SUPABASE_PROJECT].supabase.co
-   SUPABASE_KEY=[YOUR_SUPABASE_ANON_KEY]
+   SUPABASE_URL=https://ybdxeibypugxfnviaamz.supabase.co
+   SUPABASE_KEY=sb_publishable_Ojw3qiopsSXfehVNUOEt1A_10n84OOZ
    PORT=3000
    ```
 4. Jalankan server lokal:
@@ -52,10 +52,10 @@ create table loans (
 **Request Body (JSON):**
 ```json
 {
-  "member_name": "Budi Santoso",
+  "member_name": "Aliya Umu Kholisoh",
   "book_title": "Belajar Express.js",
-  "loan_date": "2023-10-01",
-  "due_date": "2023-10-08",
+  "loan_date": "2026-10-10",
+  "due_date": "2026-10-18",
   "status": "Dipinjam"
 }
 ```
@@ -63,10 +63,10 @@ create table loans (
 ```json
 {
   "id": "e2a3b4c5-...",
-  "member_name": "Budi Santoso",
+  "member_name": "Aliya Umu Kholisoh",
   "book_title": "Belajar Express.js",
-  "loan_date": "2023-10-01",
-  "due_date": "2023-10-08",
+  "loan_date": "2026-10-10",
+  "due_date": "2026-10-18",
   "return_date": null,
   "status": "Dipinjam"
 }
@@ -80,10 +80,10 @@ Mendukung Query Parameter untuk filter, contoh: `GET /api/loans?status=Terlambat
 [
   {
     "id": "e2a3b4c5-...",
-    "member_name": "Budi Santoso",
+    "member_name": "Aliya Umu Kholisoh",
     "book_title": "Belajar Express.js",
-    "loan_date": "2023-10-01",
-    "due_date": "2023-10-08",
+    "loan_date": "2026-10-10",
+    "due_date": "2026-10-18",
     "return_date": null,
     "status": "Terlambat"
   }
@@ -95,10 +95,10 @@ Mendukung Query Parameter untuk filter, contoh: `GET /api/loans?status=Terlambat
 ```json
 {
   "id": "e2a3b4c5-...",
-  "member_name": "Budi Santoso",
+  "member_name": "Aliya Umu Kholisoh",
   "book_title": "Belajar Express.js",
-  "loan_date": "2023-10-01",
-  "due_date": "2023-10-08",
+  "loan_date": "2026-10-10",
+  "due_date": "2026-10-18",
   "return_date": null,
   "status": "Dipinjam"
 }
@@ -110,7 +110,7 @@ Berguna ketika anggota mengembalikan buku (Update `status` dan `return_date`).
 **Request Body (JSON):**
 ```json
 {
-  "return_date": "2023-10-06",
+  "return_date": "2026-10-16",
   "status": "Dikembalikan"
 }
 ```
@@ -120,9 +120,9 @@ Berguna ketika anggota mengembalikan buku (Update `status` dan `return_date`).
   "id": "e2a3b4c5-...",
   "member_name": "Budi Santoso",
   "book_title": "Belajar Express.js",
-  "loan_date": "2023-10-01",
-  "due_date": "2023-10-08",
-  "return_date": "2023-10-06",
+  "loan_date": "2026-10-10",
+  "due_date": "2026-10-18",
+  "return_date": "2026-10-16",
   "status": "Dikembalikan"
 }
 ```
@@ -136,5 +136,6 @@ Berguna ketika anggota mengembalikan buku (Update `status` dan `return_date`).
 ```
 
 ## Link Hasil Deployment Vercel
-(Isi dengan link Vercel setelah di-deploy, contoh: `https://library-api-responsi.vercel.app`)
+https://sales-apimod1-git-main-aliyaumus-projects.vercel.app/
+https://sales-apimod1-git-main-aliyaumus-projects.vercel.app/api/loans
 
